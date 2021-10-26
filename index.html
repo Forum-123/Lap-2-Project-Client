@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habipad</title>
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="shortcut icon" href="static/img/favicon.png">
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="./static/css/style.css" type="text/css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.cjs.min.js"></script> -->
+    <script src="./static/js/jwt-decode.js"></script>
+    <script defer src="./static/js/script.js"></script>
+    <script defer src="./static/js/login.js"></script>
 </head>
-<body>
-    <section id="loginPage">
-        <form id='loginSignUp'>
-            <button id='login' class='login' type="text" name='postTitle' placeholder="Title" autocomplete="off">
-            <input id='postName' class='name' type="text" name='postName' placeholder="Your name" autocomplete="off">
-            <textarea id="postStory" class="story" placeholder="Your Story..."></textarea>
-            <input type="submit" class="submit-btn" value="publish">
-        </form>
-    </section>
-    <footer>
-        <p>Habipad by Katie, Forum, Chris, George and Saja [2021]</p>
-    </footer>
-    <script src="static/script.js"></script>
+<body>  
+    <form id="registerForm">
+        <input type="text" name="name" placeholder="Enter your name">
+        <input type="email" name="email" placeholder="Enter your email">
+        <input type="password" name="password" placeholder="Select a password">
+        <input type="password" name="confirmPassword" placeholder="Confirm your password">
+        <input type="submit" name="submit">
+    </form>
+    <br>
+    <form id="loginForm">
+        <input type="email" name="email" placeholder="Enter your email">
+        <input type="password" name="password" placeholder="Enter your password">
+        <input type="submit" name="submit">
+    </form>
 </body>
 </html>
