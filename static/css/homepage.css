@@ -1,0 +1,55 @@
+:root{
+    --bgyell: #FFFCC9
+}
+
+body{
+    background-color: var(--bgyell);
+}
+
+nav{
+    background-color: white;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2)
+}
+
+.nav-links li {
+    display: inline-block;
+    list-style: none;
+    margin-right: 1rem;
+}
+
+#user-greet {
+    margin-left: 1rem;
+}
+
+#app-name {
+    margin-left: 5rem;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+#display-habits{
+    margin: 2rem 5rem;
+}
+
+.habit{
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+}
+
+#display-habits div{
+    text-align: center;
+    background-color: var(--bgyell);
+
+}
+
+
+
+

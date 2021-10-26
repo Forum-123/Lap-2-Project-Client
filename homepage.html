@@ -5,9 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habit Tracker</title>
-    <link rel="stylesheet" href="./static/css/style.css" type="text/css">
+    <link rel="stylesheet" href="./static/css/homepage.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>  
+
+    <nav>
+        <h3 id="user-greet">Hello [user]</h3>
+        <h1 id="app-name">Habit Tracker</h1>
+        <ul class="nav-links">
+            <li>New Habit +</li>
+            <li>Sign Out</li>
+        </ul>
+    </nav>
+
+    <section id="display-habits">
+        <div class="habit">
+            <div id="streak">
+                <p>streak:</p>
+                <h3 id="streak-count">22</h3>
+            </div>
+            <div id="habit-name">
+                <h2>drink 2l water</h2>
+            </div>
+
+            <div id="habit-checkbox">
+                <form action="">
+                    <label for="habit-complete">have you done this today?</label>
+                    <input type="checkbox" name="habit-complete" id="habit-complete">
+                </form>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
