@@ -4,8 +4,8 @@ const loginForm = document.getElementById('loginForm');
 regForm.addEventListener('submit', e => {
     e.preventDefault();
     const name = regForm.children['name'].value;
-    const email = regForm.children['email'].value;
-    const password = regForm.children['password'].value;
+    const email = regForm.children['newEmail'].value;
+    const password = regForm.children['newPassword'].value;
     const confirmPass = regForm.children['confirmPassword'].value;
 
     if(password === confirmPass){
