@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habit Tracker</title>
     <link rel="stylesheet" href="./static/css/homepage.css" type="text/css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>  
 
@@ -19,7 +19,24 @@
         </ul>
     </nav>
 
-    
+    <section id="display-habits">
+        <div class="habit">
+            <div id="streak">
+                <p>streak:</p>
+                <h3 id="streak-count">22</h3>
+            </div>
+            <div id="habit-name">
+                <h2>drink 2l water</h2>
+            </div>
+
+            <div id="habit-checkbox">
+                <form action="">
+                    <label for="habit-complete">have you done this today?</label>
+                    <input type="checkbox" name="habit-complete" id="habit-complete">
+                </form>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
