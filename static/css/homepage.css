@@ -1,0 +1,35 @@
+:root{
+    --bgyell: #FFFCC9
+}
+
+body{
+    background-color: var(--bgyell);
+}
+
+nav{
+    background-color: white;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2)
+}
+
+.nav-links li {
+    display: inline-block;
+    list-style: none;
+    margin-right: 1rem;
+}
+
+#user-greet {
+    margin-left: 1rem;
+}
+
+#app-name {
+    margin-left: 1rem;
+}
+
+
+
+
+
