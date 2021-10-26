@@ -11,22 +11,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Patrick+Hand&display=swap" rel="stylesheet">
     <script src="./static/js/jwt-decode.js"></script>
+    <script defer src="./static/js/buttons.js"></script>
     <script defer src="./static/js/script.js"></script>
     <script defer src="./static/js/login.js"></script>
 </head>
 <body>
     <h1 id="title">Habit Tracker</h1>
+    <input type="submit" id="signUpButton" name="submit" value="Sign Up">
+    <input type="submit" id="logInButton" name="submit" value="Log In">
     <form id="registerForm">
         <label for="name">Name: </label>
         <input type="text" id="name" name="name" placeholder="Enter your name">
-        <label for="email">Email: </label>
-        <input type="email" id="email" name="email" placeholder="Enter your email">
-        <label for="password">Password: </label>
-        <input type="password" id="password" name="password" placeholder="Select a password">
+        <label for="newEmail">Email: </label>
+        <input type="email" id="newEmail" name="newEmail" placeholder="Enter your email">
+        <label for="newPassword">Password: </label>
+        <input type="password" id="newPassword" name="newPassword" placeholder="Select a password">
         <label for="confirmPassword">Confirm Password: </label>
         <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password">
         <input type="submit" name="submit" value="Sign Up">
-        <a href="#loginForm">Already Registered?</a>
+        <a id="alreadyRegLink">Already Registered?</a>
     </form>
     <br>
     <form id="loginForm">
@@ -35,6 +38,7 @@
         <label for="password">Password: </label>
         <input type="password" name="password" placeholder="Enter your password">
         <input type="submit" name="submit" value="Log In">
+        <a id="notYetRegLink">Not yet registered?</a>
     </form>
 </body>
 </html>

@@ -7,9 +7,15 @@ body {
     font-family: 'Courgette', cursive;
     margin: 20px auto;
     text-align: center;
+    display: block;
+}
+
+#signUpButton, #logInButton {
+    display: block;
 }
 
 form {
+    display: none;
     margin: 0 auto;
     width: 30%;
     text-align: center;
@@ -53,4 +59,11 @@ input[type=submit]:hover {
 input::placeholder {
     color: black;
     opacity: 0.5;
+}
+
+#alreadyRegLink, #notYetRegLink {
+    font-size: smaller;
+    font-weight: 200;
+    text-decoration: underline;
+    cursor: pointer;
 }
