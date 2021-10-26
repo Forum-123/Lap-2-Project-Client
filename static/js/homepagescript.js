@@ -57,7 +57,6 @@ function displayHabits(habits) {
         checkboxForm.append(checkboxTick);
         checkboxArea.appendChild(checkboxForm);
 
-        //displays everything on page
         habitSection.appendChild(checkboxArea);
     }
 }
