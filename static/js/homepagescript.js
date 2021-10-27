@@ -5,25 +5,26 @@ async function displayStreakCount(habitId) {
     try {
         let logs = await fetch(`http://localhost:3000/logs/habit/${habitId}`);
         let logsJson = await logs.json();
-        return getStreakCount(logsJson);
+        if (logsJson.length) {
+            return getStreakCount(logsJson)
+        }
     }
     catch(err) {
         console.warn;
     }
 }
-
+// this function prevents habits being displayed atm
 async function getStreakCount(logs) {
     const habitId = logs[0].habitId; 
-
     async function getHabitByHabitId(habitId) {
     try {
         let habit = await fetch(`http://localhost:3000/habits/${habitId}`);
         let habitJson = await habit.json();
         return habitJson;
-    }
+        }
     catch(err) {
             console.warn;
-    }
+        }       
     }
     
     let returnedHabit = await getHabitByHabitId(habitId);
@@ -81,7 +82,7 @@ async function displayHabits(habits) {
         
         let streakCountNumber = await displayStreakCount(habits[i].id);
 
-        streakCount.textContent = streakCountNumber;
+        streakCount.textContent = streakCountNumber || '0';
 
         streakArea.appendChild(streakHeader);
         streakArea.appendChild(streakCount);
