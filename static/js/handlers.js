@@ -22,3 +22,4 @@ habitForm.addEventListener('submit', e => {
 
     submitHabit(title, frequency, userid);
 })
+
