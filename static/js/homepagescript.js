@@ -1,6 +1,5 @@
 const habitSection = document.querySelector('#display-habits');
-
-let userId;
+const storedUserId = localStorage.getItem("userId");
 
 async function displayStreakCount(habitId) {
     try {
@@ -15,19 +14,12 @@ async function displayStreakCount(habitId) {
 
 function getStreakCount(logs) {
     let streakCount = 0;
-    console.log(logs);
     for(let i = 1; i < logs.length; i++) {
-        let date1 = new Date(logs[i-1].logDate);
-        console.log(`date1 is ${date1}`)
-        console.log(typeof date1);
-       
+        let date1 = new Date(logs[i - 1].logDate);
         let date2 = new Date(logs[i].logDate);
-        console.log(`date2 is ${date2}`)
         
         let differenceInTime = date2.getTime() - date1.getTime();
         let differenceInDays = differenceInTime / (1000 * 3600 * 24);
-
-        console.log(differenceInDays);
 
         if(differenceInDays > 1) {
             streakCount = 0;
@@ -35,7 +27,6 @@ function getStreakCount(logs) {
             streakCount++;
         };
     };
-    console.log(`streak count is ${streakCount}`);
     return streakCount;
 };
 
@@ -57,7 +48,6 @@ async function displayHabits(habits) {
         const streakCount = document.createElement('h3');
         
         let streakCountNumber = await displayStreakCount(habits[i].id);
-        console.log(streakCountNumber);
 
         streakCount.textContent = streakCountNumber;
 
@@ -86,7 +76,7 @@ async function displayHabits(habits) {
             checkboxLabel.textContent = "Have you done this this week?";
         }
         else {
-            checkboxLabel.habitFrequency = "Have you done this this month?";
+            checkboxLabel.textContent = "Have you done this this month?";
         }
         checkboxArea.appendChild(checkboxLabel);
 
@@ -101,5 +91,5 @@ async function displayHabits(habits) {
 }
 
 window.addEventListener('load', e => {
-    getUserHabits(1);
+    getUserHabits(storedUserId);
 })

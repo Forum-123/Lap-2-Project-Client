@@ -14,11 +14,11 @@
 <body>  
 
     <nav>
-        <h3 id="user-greet">Hello [user]</h3>
+        <h3 id="user-greet"></h3>
         <h1 id="app-name">Habit Tracker</h1>
         <ul class="nav-links">
             <li><a id="newHabitButton">New Habit</a></li>
-            <li>Sign Out</li>
+            <li><a id="signOutButton">Sign Out</a></li>
         </ul>
     </nav>
 
@@ -32,9 +32,9 @@
                 <br>
                 <label for="frequency">How often would you like to track this habit?</label>
                 <select id="habitFrequencyDropdown" name="frequency">
-                    <option value="daily">Daily</option>
-                    <option value="weekly">Weekly</option>
-                    <option value="monthly">Monthly</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
                 </select>
                 <br>
                 <input id="newHabitSubmit" type="submit" value="Create Habit">
