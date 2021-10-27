@@ -12,7 +12,22 @@ async function displayStreakCount(habitId) {
     }
 }
 
-function getStreakCount(logs) {
+async function getStreakCount(logs) {
+    const habitId = logs[0].habitId; 
+
+    async function getHabitByHabitId(habitId) {
+    try {
+        let habit = await fetch(`http://localhost:3000/habits/${habitId}`);
+        let habitJson = await habit.json();
+        return habitJson;
+    }
+    catch(err) {
+            console.warn;
+    }
+    }
+    
+    let returnedHabit = await getHabitByHabitId(habitId);
+
     let streakCount = 0;
     for(let i = 1; i < logs.length; i++) {
         let date1 = new Date(logs[i - 1].logDate);
@@ -20,14 +35,31 @@ function getStreakCount(logs) {
         
         let differenceInTime = date2.getTime() - date1.getTime();
         let differenceInDays = differenceInTime / (1000 * 3600 * 24);
+        if (returnedHabit.habitFrequency === 'Daily')
+        {
+            if(differenceInDays > 1) {
+                streakCount = 0;
+            } else if(differenceInDays === 1) {
+                streakCount++;
+            };
+        } else if (returnedHabit.habitFrequency === 'Weekly') {
+            if(differenceInDays > 7) {
+                streakCount = 0;
+            } else if(differenceInDays === 7) {
+                streakCount++;
+            };
+        } else if (returnedHabit.habitFrequency === 'Monthly') {
+            if(differenceInDays > 31) {
+                streakCount = 0;
+            } else if(differenceInDays === 31) {
+                streakCount++;
+            };
+        } 
 
-        if(differenceInDays > 1) {
-            streakCount = 0;
-        } else if(differenceInDays === 1) {
-            streakCount++;
-        };
-    };
+        }
     return streakCount;
+
+
 };
 
 function getUserHabits(userId) {
