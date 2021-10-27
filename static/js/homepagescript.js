@@ -2,6 +2,43 @@ const habitSection = document.querySelector('#display-habits');
 
 let userId;
 
+async function displayStreakCount(habitId) {
+    try {
+        let logs = await fetch(`http://localhost:3000/logs/habit/${habitId}`);
+        let logsJson = await logs.json();
+        return getStreakCount(logsJson);
+    }
+    catch(err) {
+        console.warn;
+    }
+}
+
+function getStreakCount(logs) {
+    let streakCount = 0;
+    console.log(logs);
+    for(let i = 1; i < logs.length; i++) {
+        let date1 = new Date(logs[i-1].logDate);
+        console.log(`date1 is ${date1}`)
+        console.log(typeof date1);
+       
+        let date2 = new Date(logs[i].logDate);
+        console.log(`date2 is ${date2}`)
+        
+        let differenceInTime = date2.getTime() - date1.getTime();
+        let differenceInDays = differenceInTime / (1000 * 3600 * 24);
+
+        console.log(differenceInDays);
+
+        if(differenceInDays > 1) {
+            streakCount = 0;
+        } else if(differenceInDays === 1) {
+            streakCount++;
+        };
+    };
+    console.log(`streak count is ${streakCount}`);
+    return streakCount;
+};
+
 function getUserHabits(userId) {
     fetch(`http://localhost:3000/habits/user/${userId}`)
         .then(resp => {
@@ -11,7 +48,7 @@ function getUserHabits(userId) {
         .catch(console.warn)
 };
 
-function displayHabits(habits) {
+async function displayHabits(habits) {
     for(let i = 0; i < habits.length; i++) {
         //displays streak
         const streakArea = document.createElement('div');
@@ -19,8 +56,10 @@ function displayHabits(habits) {
         streakHeader.textContent = "Streak:";
         const streakCount = document.createElement('h3');
         
-        //CHANGE THIS!!!
-        streakCount.textContent = "22";
+        let streakCountNumber = await displayStreakCount(habits[i].id);
+        console.log(streakCountNumber);
+
+        streakCount.textContent = streakCountNumber;
 
         streakArea.appendChild(streakHeader);
         streakArea.appendChild(streakCount);
