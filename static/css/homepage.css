@@ -44,12 +44,12 @@ nav{
     grid-template-columns: 20% 60% 20%;
     row-gap: 0.05rem;
     background-color: black;
+    grid-template-rows: repeat(auto-fit, 90px);
 }
 
 #display-habits div{
     text-align: center;
     background-color: var(--bgyell);
-
 }
 
 #closeNewHabitModal{
@@ -96,5 +96,8 @@ nav{
     margin-right: auto;
 }
 
+#closeNewHabitModal:hover, a:hover {
+    cursor: pointer;
+}
 
 
