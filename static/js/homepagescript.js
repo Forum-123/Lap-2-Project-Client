@@ -83,10 +83,14 @@ async function displayHabits(habits) {
         const checkboxForm = document.createElement('form');
         const checkboxTick = document.createElement('input');
         checkboxTick.type = "checkbox";
+
         checkboxForm.append(checkboxTick);
         checkboxArea.appendChild(checkboxForm);
         
         habitSection.appendChild(checkboxArea);
+
+        checkboxTick.setAttribute('id', `habitBox${habits[i].id}`);
+        checkboxClick(`habitBox${habits[i].id}`, habits[i].id);
     }
 }
 
