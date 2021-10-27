@@ -35,6 +35,5 @@ const tryLogin = (data) => {
     console.log(decodedToken)
     localStorage.setItem('username', decodedToken.user);
     localStorage.setItem('token', data.token);
-    alert('successful login');
-    location.href = "http://localhost:8080/homepage.html";
+    location.href = "./homepage.html";
 }

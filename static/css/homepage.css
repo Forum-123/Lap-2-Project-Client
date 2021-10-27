@@ -52,6 +52,49 @@ nav{
 
 }
 
+#closeNewHabitModal{
+    float: right;
+    border: 0;
+}
+
+#newHabitModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 25vw;
+    top: 25vh;
+    height: 30vh;
+    width: 50vw;
+    overflow: auto;
+    background-color: #fff;
+    padding: 20px 50px 50px 50px;
+    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.8);
+}
+
+#newHabitModalTitle {
+    text-align: center;
+}
+
+#newHabitForm {
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+    font-family: 'Patrick Hand', cursive;
+    font-weight: 700;
+    font-size: larger;
+    background-color: #fff;
+}
+
+#newHabitTextarea {
+    width: 100%;
+    border-radius: 5px;
+}
+
+#habitFrequencyDropdown, #newHabitSubmit{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 
 

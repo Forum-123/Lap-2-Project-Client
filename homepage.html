@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./static/css/homepage.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
     <script defer src="./static/js/homepagescript.js"></script>
+    <script defer src="./static/js/api.js"></script>
+    <script defer src="./static/js/handlers.js"></script>
 </head>
 <body>  
 
@@ -15,11 +17,30 @@
         <h3 id="user-greet">Hello [user]</h3>
         <h1 id="app-name">Habit Tracker</h1>
         <ul class="nav-links">
-            <li>New Habit +</li>
+            <li><a id="newHabitButton">New Habit</a></li>
             <li>Sign Out</li>
         </ul>
     </nav>
 
+    <article id="newHabitModal">
+        <button id="closeNewHabitModal" type="button">X</button>
+        <h3 id="newHabitModalTitle">New Habit</h3>
+        <section id="modalBody">
+            <form id="newHabitForm">
+                <label for="title">What habit do you wish to track?</label>
+                <textarea id="newHabitTextarea" type="text" name="title" rows="5"></textarea>
+                <br>
+                <label for="frequency">How often would you like to track this habit?</label>
+                <select id="habitFrequencyDropdown" name="frequency">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+                <br>
+                <input id="newHabitSubmit" type="submit" value="Create Habit">
+            </form>
+        </section>
+    </article>
     <section id="display-habits" class="habit">
     </section>
 

@@ -95,7 +95,7 @@ async function displayHabits(habits) {
         checkboxTick.type = "checkbox";
         checkboxForm.append(checkboxTick);
         checkboxArea.appendChild(checkboxForm);
-
+        
         habitSection.appendChild(checkboxArea);
     }
 }
