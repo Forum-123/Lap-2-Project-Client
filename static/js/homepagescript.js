@@ -3,16 +3,52 @@ const storedUserId = localStorage.getItem("userId");
 
 async function displayStreakCount(habitId) {
     try {
-        let logs = await fetch(`https://wellbeing-habit-tracker-server.herokuapp.com/logs/habit/${habitId}`);
+        let logs = await fetch(`https://wellbeing-habit-tracker-server.herokuapp.com/logs/habit/${habitId}`, { 
+            headers: new Headers({ 'Authorization': localStorage.getItem('token') })
+        });
         let logsJson = await logs.json();
-        return getStreakCount(logsJson);
+        if (logsJson.length) {
+            return getStreakCount(logsJson)
+        }
     }
     catch(err) {
         console.warn;
     }
 }
 
-function getStreakCount(logs) {
+async function getLastLog(habitId) {
+    try {
+        let log = await fetch(`http://localhost:3000/logs/habit/${habitId}`, {
+            headers: new Headers({ 'Authorization': localStorage.getItem('token') })
+        });
+        let logsJson = await log.json();
+        if (logsJson.length) {
+            return new Date(logsJson[logsJson.length-1].logDate);
+        }
+    }
+    catch(err) {
+        console.warn;
+    }
+}
+
+async function getHabitByHabitId(habitId) {
+    try {
+        let habit = await fetch(`http://localhost:3000/habits/${habitId}`, {
+            headers: new Headers({ 'Authorization': localStorage.getItem('token') })
+        });
+        let habitJson = await habit.json();
+        return habitJson;
+    }catch(err) {
+        console.warn;
+    }       
+}
+
+// this function prevents habits being displayed atm
+async function getStreakCount(logs) {
+    const habitId = logs[0].habitId; 
+    
+    let returnedHabit = await getHabitByHabitId(habitId);
+
     let streakCount = 0;
     for(let i = 1; i < logs.length; i++) {
         let date1 = new Date(logs[i - 1].logDate);
@@ -20,18 +56,37 @@ function getStreakCount(logs) {
         
         let differenceInTime = date2.getTime() - date1.getTime();
         let differenceInDays = differenceInTime / (1000 * 3600 * 24);
+        if (returnedHabit.habitFrequency === 'Daily')
+        {
+            if(differenceInDays > 1) {
+                streakCount = 0;
+            } else if(differenceInDays === 1) {
+                streakCount++;
+            };
+        } else if (returnedHabit.habitFrequency === 'Weekly') {
+            if(differenceInDays > 7) {
+                streakCount = 0;
+            } else if(differenceInDays === 7) {
+                streakCount++;
+            };
+        } else if (returnedHabit.habitFrequency === 'Monthly') {
+            if(differenceInDays > 31) {
+                streakCount = 0;
+            } else if(differenceInDays === 31) {
+                streakCount++;
+            };
+        } 
 
-        if(differenceInDays > 1) {
-            streakCount = 0;
-        } else if(differenceInDays === 1) {
-            streakCount++;
-        };
-    };
+        }
     return streakCount;
+
+
 };
 
 function getUserHabits(userId) {
-    fetch(`https://wellbeing-habit-tracker-server.herokuapp.com/habits/user/${userId}`)
+    fetch(`https://wellbeing-habit-tracker-server.herokuapp.com/habits/user/${userId}`, {
+        headers: new Headers({ 'Authorization': localStorage.getItem('token') })
+    })
         .then(resp => {
             return resp.json()
         })
@@ -49,7 +104,7 @@ async function displayHabits(habits) {
         
         let streakCountNumber = await displayStreakCount(habits[i].id);
 
-        streakCount.textContent = streakCountNumber;
+        streakCount.textContent = streakCountNumber || '0';
 
         streakArea.appendChild(streakHeader);
         streakArea.appendChild(streakCount);
@@ -83,13 +138,29 @@ async function displayHabits(habits) {
         const checkboxForm = document.createElement('form');
         const checkboxTick = document.createElement('input');
         checkboxTick.type = "checkbox";
+
         checkboxForm.append(checkboxTick);
         checkboxArea.appendChild(checkboxForm);
         
         habitSection.appendChild(checkboxArea);
+
+        let lastEntry = await getLastLog(habits[i].id);
+
+        if(lastEntry){
+            if(lastEntry.getDate() === new Date().getDate()){
+                checkboxTick.disabled = true;
+            } else if (habits[i].habitFrequency === "Weekly" && new Date().getDate() - lastEntry.getDate() < 7 || new Date().getDate() - lastEntry.getDate() > 7) {
+                checkboxTick.disabled = true;
+            } else if (habits[i].habitFrequency === "Monthly" && new Date().getDate() - lastEntry.getDate() < 31 || new Date().getDate() - lastEntry.getDate() > 31) {
+                checkboxTick.disabled = true;
+            }
+        }
+
+        checkboxTick.setAttribute('id', `habitBox${habits[i].id}`);
+        checkboxClick(`habitBox${habits[i].id}`, habits[i].id);
     }
 }
 
 window.addEventListener('load', e => {
-    getUserHabits(storedUserId);
+    getUserHabits(1);
 })

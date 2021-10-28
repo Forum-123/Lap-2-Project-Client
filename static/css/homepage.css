@@ -100,4 +100,13 @@ nav{
     cursor: pointer;
 }
 
+.boxChecked {
+    pointer-events: none;
+    appearance: none;
+    background-color: rgb(21, 158, 212);
+    padding: 5px;
+}
 
+.boxChecked:after {
+    content: '\2714';
+}

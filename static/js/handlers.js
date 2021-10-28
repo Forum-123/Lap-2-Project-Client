@@ -4,6 +4,7 @@ let modal = document.getElementById('newHabitModal');
 let habitForm = document.getElementById('newHabitForm');
 let signOut = document.getElementById('signOutButton');
 let greeting = document.getElementById('user-greet');
+let checkbox =
 
 newHabit.addEventListener('click', e => {
     modal.style.display = 'block';
@@ -20,8 +21,17 @@ habitForm.addEventListener('submit', e => {
 
     let userid = storedUserId;
 
+    console.log(title, frequency, userid)
     submitHabit(title, frequency, userid);
-    window.location.reload();
+
+    function delayReload(){
+        setTimeout(reloadPage, 100);
+    }
+    function reloadPage () {
+        location.reload();
+    }
+
+    delayReload();
 });
 
 signOut.addEventListener('click', e => {
@@ -34,5 +44,18 @@ window.addEventListener('load', e => {
     if (!username) { location.href = "./index.html" };
     greeting.textContent = `Hello ${username}`;
 });
+
+const checkboxClick = (boxId, habitId) => {
+    let habitBox = document.getElementById(boxId);
+    habitBox.addEventListener('change', e => {
+        if(e.target.checked){
+            console.log('event')
+            submitLog(habitId);
+            habitBox.disabled = true;
+        }
+    })
+}
+
+
 
 
