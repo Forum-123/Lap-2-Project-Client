@@ -1,24 +1,26 @@
-
 {
-  "name": "habit-tracker",
+  "name": "lap-2-project-client",
   "version": "1.0.0",
-  "description": "Lap 2 habit tracker",
-  "main": "script.js",
-  "directories": {
-    "test": "tests"
-  },
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --silent",
-    "coverage": "jest --coverage"
+    "test": "jest --watchAll --detectOpenHandles --runInBand --verbose --coverage --env=jsdom"
+
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Forum-123/Lap-2-Project-Client"
+    "url": "git+https://github.com/Forum-123/Lap-2-Project-Client.git"
   },
-  "author": "Chris, Katie, Saja, Forum, George",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "jest": "^27.2.4",
+  "bugs": {
+    "url": "https://github.com/Forum-123/Lap-2-Project-Client/issues"
+  },
+  "homepage": "https://github.com/Forum-123/Lap-2-Project-Client#readme",
+  "dependencies": {
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.14",
     "supertest": "^6.1.6"
   }
 }
