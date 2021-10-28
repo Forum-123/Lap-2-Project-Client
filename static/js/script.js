@@ -5,12 +5,16 @@ regForm.addEventListener('submit', e => {
     e.preventDefault();
     const name = regForm.children['name'].value;
     const email = regForm.children['newEmail'].value;
-    const password = regForm.children['newPassword'].value;
+    let password = regForm.children['newPassword'].value;
     const confirmPass = regForm.children['confirmPassword'].value;
 
+    if (password.length < 8 || !/[0-9]/g.test(password)) {
+        alert('Your password must contain at least 8 characters and at least 1 number');
+        password = '';
+    }             
     if(password === confirmPass){
         regUser(name, email, password);
-    }
+    }    
 });
 
 loginForm.addEventListener('submit', e => {
