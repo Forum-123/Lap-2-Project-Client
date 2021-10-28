@@ -1,6 +1,6 @@
 const regUser = async (name, email, password) => {
     try {
-        let response = await fetch('http://localhost:3000/auth/register', {
+        let response = await fetch('https://wellbeing-habit-tracker-server.herokuapp.com/auth/register', {
             method: 'POST',
             body: JSON.stringify({ name: name, email: email, password: password }),
             headers: {'Content-type': 'application/json; charset=UTF-8'}
@@ -18,7 +18,7 @@ const regUser = async (name, email, password) => {
 
 const loginUser = async (email, password) => {
     try {
-        let response = await fetch('http://localhost:3000/auth/login', {
+        let response = await fetch('https://wellbeing-habit-tracker-server.herokuapp.com/auth/login', {
             method: 'POST',
             body: JSON.stringify({email: email, password: password}),
             headers: {'Content-type': 'application/json; charset=UTF-8'}
