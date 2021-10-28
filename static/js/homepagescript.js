@@ -3,7 +3,9 @@ const storedUserId = localStorage.getItem("userId");
 
 async function displayStreakCount(habitId) {
     try {
-        let logs = await fetch(`http://localhost:3000/logs/habit/${habitId}`);
+        let logs = await fetch(`http://localhost:3000/logs/habit/${habitId}`, {
+            headers: new Headers({ 'Authorization': localStorage.getItem('token') })
+        });
         let logsJson = await logs.json();
         if (logsJson.length) {
             return getStreakCount(logsJson)
@@ -13,19 +15,37 @@ async function displayStreakCount(habitId) {
         console.warn;
     }
 }
+
+async function getLastLog(habitId) {
+    try {
+        let log = await fetch(`http://localhost:3000/logs/habit/${habitId}`, {
+            headers: new Headers({ 'Authorization': localStorage.getItem('token') })
+        });
+        let logsJson = await log.json();
+        if (logsJson.length) {
+            return new Date(logsJson[logsJson.length-1].logDate);
+        }
+    }
+    catch(err) {
+        console.warn;
+    }
+}
+
+async function getHabitByHabitId(habitId) {
+    try {
+        let habit = await fetch(`http://localhost:3000/habits/${habitId}`, {
+            headers: new Headers({ 'Authorization': localStorage.getItem('token') })
+        });
+        let habitJson = await habit.json();
+        return habitJson;
+    }catch(err) {
+        console.warn;
+    }       
+}
+
 // this function prevents habits being displayed atm
 async function getStreakCount(logs) {
     const habitId = logs[0].habitId; 
-    async function getHabitByHabitId(habitId) {
-    try {
-        let habit = await fetch(`http://localhost:3000/habits/${habitId}`);
-        let habitJson = await habit.json();
-        return habitJson;
-        }
-    catch(err) {
-            console.warn;
-        }       
-    }
     
     let returnedHabit = await getHabitByHabitId(habitId);
 
@@ -64,7 +84,9 @@ async function getStreakCount(logs) {
 };
 
 function getUserHabits(userId) {
-    fetch(`http://localhost:3000/habits/user/${userId}`)
+    fetch(`http://localhost:3000/habits/user/${userId}`,{
+        headers: new Headers({ 'Authorization': localStorage.getItem('token') })
+    })
         .then(resp => {
             return resp.json()
         })
@@ -122,11 +144,23 @@ async function displayHabits(habits) {
         
         habitSection.appendChild(checkboxArea);
 
+        let lastEntry = await getLastLog(habits[i].id);
+
+        if(lastEntry){
+            if(lastEntry.getDate() === new Date().getDate()){
+                checkboxTick.disabled = true;
+            } else if (habits[i].habitFrequency === "Weekly" && new Date().getDate() - lastEntry.getDate() < 7 || new Date().getDate() - lastEntry.getDate() > 7) {
+                checkboxTick.disabled = true;
+            } else if (habits[i].habitFrequency === "Monthly" && new Date().getDate() - lastEntry.getDate() < 31 || new Date().getDate() - lastEntry.getDate() > 31) {
+                checkboxTick.disabled = true;
+            }
+        }
+
         checkboxTick.setAttribute('id', `habitBox${habits[i].id}`);
         checkboxClick(`habitBox${habits[i].id}`, habits[i].id);
     }
 }
 
 window.addEventListener('load', e => {
-    getUserHabits(storedUserId);
+    getUserHabits(1);
 })
