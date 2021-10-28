@@ -1,0 +1,24 @@
+
+{
+  "name": "habit-tracker",
+  "version": "1.0.0",
+  "description": "Lap 2 habit tracker",
+  "main": "script.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest --watchAll --silent",
+    "coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forum-123/Lap-2-Project-Client"
+  },
+  "author": "Chris, Katie, Saja, Forum, George",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.2.4",
+    "supertest": "^6.1.6"
+  }
+}
