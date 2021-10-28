@@ -11,24 +11,12 @@ regForm.addEventListener('submit', e => {
     if (password.length < 8 || !/[0-9]/g.test(password)) {
         alert('Your password must contain at least 8 characters and at least 1 number');
         password = '';
-    }             
-
-
-
-
-
-
-    
-    if(password === confirmPass){
+    } 
+    if (password === confirmPass){
         regUser(name, email, password);
-    }    
-
-
-
-
-
-
-    
+    } else {
+        alert('Your passwords do not match')
+    }   
 });
 
 loginForm.addEventListener('submit', e => {
