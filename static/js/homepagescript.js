@@ -3,7 +3,7 @@ const storedUserId = localStorage.getItem("userId");
 
 async function displayStreakCount(habitId) {
     try {
-        let logs = await fetch(`http://localhost:3000/logs/habit/${habitId}`, {
+        let logs = await fetch(`https://wellbeing-habit-tracker-server.herokuapp.com/logs/habit/${habitId}`, { 
             headers: new Headers({ 'Authorization': localStorage.getItem('token') })
         });
         let logsJson = await logs.json();
@@ -84,7 +84,7 @@ async function getStreakCount(logs) {
 };
 
 function getUserHabits(userId) {
-    fetch(`http://localhost:3000/habits/user/${userId}`,{
+    fetch(`https://wellbeing-habit-tracker-server.herokuapp.com/habits/user/${userId}`, {
         headers: new Headers({ 'Authorization': localStorage.getItem('token') })
     })
         .then(resp => {
