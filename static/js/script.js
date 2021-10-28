@@ -12,13 +12,34 @@ regForm.addEventListener('submit', e => {
         alert('Your password must contain at least 8 characters and at least 1 number');
         password = '';
     }             
+
+
+
+
+
+
+    
     if(password === confirmPass){
         regUser(name, email, password);
     }    
+
+
+
+
+
+
+    
 });
 
 loginForm.addEventListener('submit', e => {
     e.preventDefault();
+
+
+
+
+
+
+    
     const email = loginForm.children['email'].value;
     const password = loginForm.children['password'].value;
     loginUser(email, password)
