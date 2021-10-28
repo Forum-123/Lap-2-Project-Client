@@ -1,0 +1,26 @@
+{
+  "name": "lap-2-project-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll --detectOpenHandles --runInBand --verbose --coverage --env=jsdom"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forum-123/Lap-2-Project-Client.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Forum-123/Lap-2-Project-Client/issues"
+  },
+  "homepage": "https://github.com/Forum-123/Lap-2-Project-Client#readme",
+  "dependencies": {
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.14",
+    "supertest": "^6.1.6"
+  }
+}

@@ -21,6 +21,13 @@ regForm.addEventListener('submit', e => {
 
 loginForm.addEventListener('submit', e => {
     e.preventDefault();
+
+
+
+
+
+
+    
     const email = loginForm.children['email'].value;
     const password = loginForm.children['password'].value;
     loginUser(email, password)
