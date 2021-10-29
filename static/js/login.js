@@ -1,3 +1,5 @@
+import { API_URL } from './url.js';
+
 const regUser = async (name, email, password) => {
     try {
         let response = await fetch('http://localhost:3000/auth/register', {
@@ -38,3 +40,5 @@ const tryLogin = (data) => {
     localStorage.setItem('userId', decodedToken.id);
     location.href = "./homepage.html";
 }
+
+export { regUser, loginUser, tryLogin };
