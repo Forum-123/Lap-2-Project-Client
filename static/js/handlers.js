@@ -49,10 +49,26 @@ const checkboxClick = (boxId, habitId) => {
     let habitBox = document.getElementById(boxId);
     habitBox.addEventListener('change', e => {
         if(e.target.checked){
-            console.log('event')
             submitLog(habitId);
             habitBox.disabled = true;
         }
+    })
+}
+
+const deleteHabit = (buttonId, habitId) => {
+    let habitBox = document.getElementById(buttonId);
+    habitBox.addEventListener('click', e => {
+        console.log('event')
+        removeHabit(habitId);
+        
+        function delayReload(){
+            setTimeout(reloadPage, 100);
+        }
+        function reloadPage () {
+            location.reload();
+        }
+    
+        delayReload();
     })
 }
 
