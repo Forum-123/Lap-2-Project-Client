@@ -1,6 +1,8 @@
+import { API_URL } from './url.js';
+
 const submitHabit = async (title, frequency, userid) => {
     try {
-        let response = await fetch('http://localhost:3000/habits', {
+        let response = await fetch(`${API_URL}/habits`, {
             method: 'POST',
             body: JSON.stringify({habit_name: title, habit_frequency: frequency, user_id: userid}),
             headers: {
@@ -18,7 +20,7 @@ const submitHabit = async (title, frequency, userid) => {
 const submitLog = async (habitId)  => {
     let today = new Date().toISOString().slice(0, 10);
     try {
-        let response = await fetch('http://localhost:3000/logs', {
+        let response = await fetch(`${API_URL}/logs`, {
             method: 'POST',
             body: JSON.stringify({habit_id:habitId, log_date:today, habit_notes:' '}),
             headers: {
@@ -46,3 +48,5 @@ const removeHabit = async (habitId)  => {
         console.log(err);
     }
 }
+
+module.exports = { submitHabit, submitLog, removeHabit };
