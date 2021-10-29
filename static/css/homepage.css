@@ -41,7 +41,7 @@ nav{
 
 .habit{
     display: grid;
-    grid-template-columns: 20% 60% 20%;
+    grid-template-columns: 10% 10% 60% 20%;
     row-gap: 0.05rem;
     background-color: black;
     grid-template-rows: repeat(auto-fit, 90px);

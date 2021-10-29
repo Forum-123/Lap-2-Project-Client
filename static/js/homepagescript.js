@@ -3,7 +3,7 @@ const storedUserId = localStorage.getItem("userId");
 
 async function displayStreakCount(habitId) {
     try {
-        let logs = await fetch(`https://wellbeing-habit-tracker-server.herokuapp.com/logs/habit/${habitId}`, { 
+        let logs = await fetch(`http://localhost:3000/logs/habit/${habitId}`, { 
             headers: new Headers({ 'Authorization': localStorage.getItem('token') })
         });
         let logsJson = await logs.json();
@@ -84,7 +84,7 @@ async function getStreakCount(logs) {
 };
 
 function getUserHabits(userId) {
-    fetch(`https://wellbeing-habit-tracker-server.herokuapp.com/habits/user/${userId}`, {
+    fetch(`http://localhost:3000/habits/user/${userId}`, {
         headers: new Headers({ 'Authorization': localStorage.getItem('token') })
     })
         .then(resp => {
@@ -96,10 +96,18 @@ function getUserHabits(userId) {
 
 async function displayHabits(habits) {
     for(let i = 0; i < habits.length; i++) {
-        //displays streak
-        const streakArea = document.createElement('div');
+        //Delete button
+        const deleteArea = document.createElement('div')
         const habitDelete = document.createElement('button')
         habitDelete.textContent = 'Delete habit';
+        deleteArea.appendChild(habitDelete);
+        habitSection.appendChild(deleteArea);
+
+        habitDelete.setAttribute('id', `habitDelete${habits[i].id}`);
+        deleteHabit(`habitDelete${habits[i].id}`, habits[i].id);
+
+        //displays streak
+        const streakArea = document.createElement('div');
         const streakHeader = document.createElement('p');
         streakHeader.textContent = "Streak:";
         const streakCount = document.createElement('h3');
@@ -151,10 +159,13 @@ async function displayHabits(habits) {
         if(lastEntry){
             if(lastEntry.getDate() === new Date().getDate()){
                 checkboxTick.disabled = true;
+                checkboxTick.checked = true;
             } else if (habits[i].habitFrequency === "Weekly" && new Date().getDate() - lastEntry.getDate() < 7 || new Date().getDate() - lastEntry.getDate() > 7) {
                 checkboxTick.disabled = true;
+                checkboxTick.checked = true;
             } else if (habits[i].habitFrequency === "Monthly" && new Date().getDate() - lastEntry.getDate() < 31 || new Date().getDate() - lastEntry.getDate() > 31) {
                 checkboxTick.disabled = true;
+                checkboxTick.checked = true;
             }
         }
 
@@ -164,5 +175,5 @@ async function displayHabits(habits) {
 }
 
 window.addEventListener('load', e => {
-    getUserHabits(1);
+    getUserHabits(storedUserId);
 })
