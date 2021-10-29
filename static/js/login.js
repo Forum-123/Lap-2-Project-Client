@@ -35,5 +35,6 @@ const tryLogin = (data) => {
     console.log(decodedToken)
     localStorage.setItem('username', decodedToken.user);
     localStorage.setItem('token', data.token);
-    alert('successful login');
+    localStorage.setItem('userId', decodedToken.id);
+    location.href = "./homepage.html";
 }

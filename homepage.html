@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HabiPad</title>
+    <link rel="stylesheet" href="./static/css/homepage.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon-16x16.png" type="image/x-icon">
+    <script defer src="./static/js/homepagescript.js"></script>
+    <script defer src="./static/js/api.js"></script>
+    <script defer src="./static/js/handlers.js"></script>
+</head>
+<body>  
+
+    <nav>
+        <h3 id="user-greet"></h3>
+        <h1 id="app-name">HabiPad</h1>
+        <ul class="nav-links">
+            <li><a id="newHabitButton">New Habit</a></li>
+            <li><a id="signOutButton">Sign Out</a></li>
+        </ul>
+    </nav>
+
+    <article id="newHabitModal">
+        <button id="closeNewHabitModal" type="button">X</button>
+        <h3 id="newHabitModalTitle">New Habit</h3>
+        <section id="modalBody">
+            <form id="newHabitForm">
+                <label for="title">What habit do you wish to track?</label>
+                <textarea id="newHabitTextarea" type="text" name="title" rows="5"></textarea>
+                <br>
+                <label for="frequency">How often would you like to track this habit?</label>
+                <select id="habitFrequencyDropdown" name="frequency">
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                </select>
+                <br>
+                <input id="newHabitSubmit" type="submit" value="Create Habit">
+            </form>
+        </section>
+    </article>
+    <section id="display-habits" class="habit">
+    </section>
+
+</body>
+</html>

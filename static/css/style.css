@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    background-color: #FFFCC9;
+}
+
+#title {
+    padding-top: 10rem;
+    font-family: 'Caveat', cursive;
+    margin: 20px auto;
+    text-align: center;
+    display: block;
+    font-size: 8rem;
+}
+
+#signUpButton, #logInButton {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    border: 0.05rem solid black;
+}
+
+#signUpButton:hover {
+    background-color:  rgba(255, 255, 255, 0.8);
+}
+
+#logInButton:hover {
+    background-color:  rgba(255, 255, 255, 0.8);
+}
+
+form input[type=submit] {
+    min-width: 40%;
+}
+
+
+form {
+    display: none;
+    padding-top: 10px;
+    margin: 0 auto;
+    width: 30%;
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: larger;
+    background-color: #fff;
+    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.8);
+}
+
+input[type=text], input[type=email], input[type=password] {
+    width: 60%;
+    padding: 10px 10px;
+    margin: 10px auto;
+    display: block;
+    outline: none;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid black;
+}
+
+input[type=submit] {
+    width: 60%;
+    padding: 10px 10px;
+    margin: 20px auto;
+    display: block;
+    background-color: white;
+    color: black;
+    border: none;
+    width: 15%;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    border: 0.05rem solid black;
+}
+
+input[type=submit]:hover {
+    background-color:rgba(255, 252, 201, 0.5);
+}
+
+input::placeholder {
+    color: black;
+    opacity: 0.5;
+}
+
+#alreadyRegLink, #notYetRegLink {
+    font-size: smaller;
+    font-weight: 200;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 425px ) {
+    #title{
+        font-size: 5rem;
+    }
+}
+
+/* tablet and laptops */
+@media only screen and (min-width: 768px ) {
+    #title {
+        font-size: 8rem;
+    }
+}
