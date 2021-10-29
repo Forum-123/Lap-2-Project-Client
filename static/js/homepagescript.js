@@ -1,11 +1,9 @@
-import { API_URL } from './url.js';
-
 const habitSection = document.querySelector('#display-habits');
 const storedUserId = localStorage.getItem("userId");
 
 async function displayStreakCount(habitId) {
     try {
-        let logs = await fetch(`http://localhost:3000/logs/habit/${habitId}`, { 
+        let logs = await fetch(`${API_URL}/logs/habit/${habitId}`, {
             headers: new Headers({ 'Authorization': localStorage.getItem('token') })
         });
         let logsJson = await logs.json();
@@ -20,7 +18,7 @@ async function displayStreakCount(habitId) {
 
 async function getLastLog(habitId) {
     try {
-        let log = await fetch(`http://localhost:3000/logs/habit/${habitId}`, {
+        let log = await fetch(`${API_URL}/logs/habit/${habitId}`, {
             headers: new Headers({ 'Authorization': localStorage.getItem('token') })
         });
         let logsJson = await log.json();
@@ -35,7 +33,7 @@ async function getLastLog(habitId) {
 
 async function getHabitByHabitId(habitId) {
     try {
-        let habit = await fetch(`http://localhost:3000/habits/${habitId}`, {
+        let habit = await fetch(`${API_URL}/habits/${habitId}`, {
             headers: new Headers({ 'Authorization': localStorage.getItem('token') })
         });
         let habitJson = await habit.json();
@@ -86,7 +84,7 @@ async function getStreakCount(logs) {
 };
 
 function getUserHabits(userId) {
-    fetch(`http://localhost:3000/habits/user/${userId}`, {
+    fetch(`${API_URL}/habits/user/${userId}`, {
         headers: new Headers({ 'Authorization': localStorage.getItem('token') })
     })
         .then(resp => {

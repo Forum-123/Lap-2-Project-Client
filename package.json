@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll --detectOpenHandles --runInBand --verbose --coverage --env=jsdom",
-    "bundle": "browserify ./static/js/script.js -t > bundle.js",
+    "bundle": "browserify ./static/js/*.js -t > bundle.js",
     "dev": "concurrently \"watchify ./static/js/script.js -o bundle.js\" \"http-server\""
   },
   "repository": {

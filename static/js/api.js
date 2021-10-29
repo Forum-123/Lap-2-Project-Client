@@ -1,5 +1,3 @@
-import { API_URL } from './url.js';
-
 const submitHabit = async (title, frequency, userid) => {
     try {
         let response = await fetch(`${API_URL}/habits`, {
@@ -37,7 +35,7 @@ const submitLog = async (habitId)  => {
 
 const removeHabit = async (habitId)  => {
     try {
-        await fetch(`http://localhost:3000/habits/${habitId}`, {
+        await fetch(`${API_URL}/habits/${habitId}`, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
