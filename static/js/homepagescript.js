@@ -1,3 +1,5 @@
+import { API_URL } from './url.js';
+
 const habitSection = document.querySelector('#display-habits');
 const storedUserId = localStorage.getItem("userId");
 
