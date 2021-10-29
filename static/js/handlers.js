@@ -4,7 +4,6 @@ let modal = document.getElementById('newHabitModal');
 let habitForm = document.getElementById('newHabitForm');
 let signOut = document.getElementById('signOutButton');
 let greeting = document.getElementById('user-greet');
-let checkbox =
 
 newHabit.addEventListener('click', e => {
     modal.style.display = 'block';

@@ -40,5 +40,3 @@ const tryLogin = (data) => {
     localStorage.setItem('userId', decodedToken.id);
     location.href = "./homepage.html";
 }
-
-export { regUser, loginUser, tryLogin };

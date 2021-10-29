@@ -48,5 +48,3 @@ const removeHabit = async (habitId)  => {
         console.log(err);
     }
 }
-
-module.exports = { submitHabit, submitLog, removeHabit };

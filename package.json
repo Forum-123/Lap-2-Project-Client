@@ -5,8 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --detectOpenHandles --runInBand --verbose --coverage --env=jsdom"
-
+    "test": "jest --watchAll --detectOpenHandles --runInBand --verbose --coverage --env=jsdom",
+    "bundle": "browserify ./static/js/script.js -t > bundle.js",
+    "dev": "concurrently \"watchify ./static/js/script.js -o bundle.js\" \"http-server\""
   },
   "repository": {
     "type": "git",
@@ -20,8 +21,12 @@
   },
   "homepage": "https://github.com/Forum-123/Lap-2-Project-Client#readme",
   "dependencies": {
+    "browserify": "^17.0.0",
     "jest": "^27.3.1",
-    "nodemon": "^2.0.14",
-    "supertest": "^6.1.6"
+    "nodemon": "^2.0.14"
+  },
+  "devDependencies": {
+    "concurrently": "^6.3.0",
+    "watchify": "^4.0.0"
   }
 }
