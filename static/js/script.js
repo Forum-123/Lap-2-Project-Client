@@ -1,3 +1,5 @@
+import { regUser, loginUser } from './login.js';
+
 const regForm = document.getElementById('registerForm');
 const loginForm = document.getElementById('loginForm');
 
