@@ -4,7 +4,8 @@ body {
 }
 
 #title {
-    font-family: 'Courgette', cursive;
+    font-family: 'Caveat', cursive;
+    font-size: 8rem;
     margin: 20px auto;
     text-align: center;
     display: block;
@@ -19,11 +20,12 @@ form {
     margin: 0 auto;
     width: 30%;
     text-align: center;
-    font-family: 'Patrick Hand', cursive;
+    font-family: 'Caveat', cursive;
     font-weight: 700;
     font-size: larger;
     background-color: #fff;
-    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.8);
+    box-shadow: 5px 5px 15px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
 }
 
 input[type=text], input[type=email], input[type=password] {
@@ -50,6 +52,10 @@ input[type=submit] {
     border-radius: 5px;
 }
 
+form input[type=submit] {
+    min-width: 40%;
+}
+
 input[type=submit]:hover {
     background-color: #45a049;
 }
@@ -64,4 +70,19 @@ input::placeholder {
     font-weight: 200;
     text-decoration: underline;
     cursor: pointer;
+}
+
+/* responsiveness */
+/* large mobile screen */
+@media only screen and (max-width: 425px ) {
+    #title{
+        font-size: 5rem;
+    }
+}
+
+/* tablet and laptops */
+@media only screen and (min-width: 768px ) {
+    #title {
+        font-size: 8rem;
+    }
 }
