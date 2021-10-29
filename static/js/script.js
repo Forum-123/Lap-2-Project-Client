@@ -1,3 +1,7 @@
+const API_URL = "https://wellbeing-habit-tracker-server.herokuapp.com";
+
+// Login/Register Form
+
 const regForm = document.getElementById('registerForm');
 const loginForm = document.getElementById('loginForm');
 
