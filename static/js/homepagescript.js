@@ -98,6 +98,8 @@ async function displayHabits(habits) {
     for(let i = 0; i < habits.length; i++) {
         //displays streak
         const streakArea = document.createElement('div');
+        const habitDelete = document.createElement('button')
+        habitDelete.textContent = 'Delete habit';
         const streakHeader = document.createElement('p');
         streakHeader.textContent = "Streak:";
         const streakCount = document.createElement('h3');
