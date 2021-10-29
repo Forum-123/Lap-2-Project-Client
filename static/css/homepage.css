@@ -1,11 +1,10 @@
 :root{
     --bgyell: #FFFCC9
 }
-
 body{
     background-color: var(--bgyell);
+    font-family: 'Caveat', cursive;
 }
-
 nav{
     background-color: white;
     margin: 0;
@@ -14,17 +13,28 @@ nav{
     align-items: center;
     box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2)
 }
-
+#habitDelete {
+    width: 60%;
+    padding: 10px 10px;
+    margin: 10px auto;
+    display: block;
+    background-color: #5379B1;
+    color: white;
+    border: none;
+    width: 15%;
+    cursor: pointer;
+    border-radius: 5px;
+}
 .nav-links li {
     display: inline-block;
     list-style: none;
     margin-right: 1rem;
+    font-family: 'Montserrat', sans-serif;
 }
-
 #user-greet {
     margin-left: 1rem;
+    font-family: 'Montserrat', sans-serif;
 }
-
 #app-name {
     margin-left: 5rem;
     font-family: 'Caveat', cursive;
@@ -32,31 +42,25 @@ nav{
     font-size: 2.8rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
-
 }
-
 #display-habits{
     margin: 2rem 5rem;
 }
-
 .habit{
     display: grid;
     grid-template-columns: 10% 10% 60% 20%;
     row-gap: 0.05rem;
     background-color: black;
-    grid-template-rows: repeat(auto-fit, 90px);
+    grid-template-rows: repeat(auto-fit, 180px);
 }
-
 #display-habits div{
     text-align: center;
     background-color: var(--bgyell);
 }
-
 #closeNewHabitModal{
     float: right;
     border: 0;
 }
-
 #newHabitModal {
     display: none;
     position: fixed;
@@ -69,44 +73,79 @@ nav{
     background-color: #fff;
     padding: 20px 50px 50px 50px;
     box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.8);
+    font-family: 'Caveat', cursive;
+    border-radius: 2px;
 }
-
 #newHabitModalTitle {
     text-align: center;
 }
-
 #newHabitForm {
     margin: 0 auto;
     width: 80%;
     text-align: center;
-    font-family: 'Patrick Hand', cursive;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: larger;
     background-color: #fff;
 }
-
+#newHabitSubmit {
+    width: 60%;
+    padding: 10px 10px;
+    margin: 10px auto;
+    display: block;
+    background-color: #FFFFFF;
+    color: black;
+    border: 0.05rem solid black;
+    width: 15%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#newHabitSubmit:hover, .delete:hover {
+    background-color: var(--bgyell);
+}
 #newHabitTextarea {
     width: 100%;
     border-radius: 5px;
 }
-
 #habitFrequencyDropdown, #newHabitSubmit{
     width: 50%;
     margin-left: auto;
     margin-right: auto;
 }
-
 #closeNewHabitModal:hover, a:hover {
     cursor: pointer;
 }
-
 .boxChecked {
     pointer-events: none;
     appearance: none;
     background-color: rgb(21, 158, 212);
     padding: 5px;
 }
-
 .boxChecked:after {
     content: '\2714';
+}
+#modaltitle, #modalfreq {
+    font-family: 'Caveat', cursive;
+}
+
+.habit p {
+    font-size: 2rem;
+}
+
+.habit h2 {
+    font-size: 3rem;
+}
+
+.habit h3 {
+    padding-top: 0;
+    font-size: 2rem;
+}
+
+.delete {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FFFFFF;
+    border: 0.05rem solid black;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 1rem;
 }

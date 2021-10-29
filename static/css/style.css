@@ -4,22 +4,40 @@ body {
 }
 
 #title {
-    font-family: 'Courgette', cursive;
+    padding-top: 10rem;
+    font-family: 'Caveat', cursive;
     margin: 20px auto;
     text-align: center;
     display: block;
+    font-size: 8rem;
 }
 
 #signUpButton, #logInButton {
     display: block;
+    font-family: 'Montserrat', sans-serif;
+    border: 0.05rem solid black;
 }
+
+#signUpButton:hover {
+    background-color:  rgba(255, 255, 255, 0.8);
+}
+
+#logInButton:hover {
+    background-color:  rgba(255, 255, 255, 0.8);
+}
+
+form input[type=submit] {
+    min-width: 40%;
+}
+
 
 form {
     display: none;
+    padding-top: 10px;
     margin: 0 auto;
     width: 30%;
     text-align: center;
-    font-family: 'Patrick Hand', cursive;
+    font-family: 'Caveat', cursive;
     font-weight: 700;
     font-size: larger;
     background-color: #fff;
@@ -40,18 +58,20 @@ input[type=text], input[type=email], input[type=password] {
 input[type=submit] {
     width: 60%;
     padding: 10px 10px;
-    margin: 10px auto;
+    margin: 20px auto;
     display: block;
-    background-color: #5379B1;
-    color: white;
+    background-color: white;
+    color: black;
     border: none;
     width: 15%;
     cursor: pointer;
     border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    border: 0.05rem solid black;
 }
 
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color:rgba(255, 252, 201, 0.5);
 }
 
 input::placeholder {
@@ -64,4 +84,17 @@ input::placeholder {
     font-weight: 200;
     text-decoration: underline;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 425px ) {
+    #title{
+        font-size: 5rem;
+    }
+}
+
+/* tablet and laptops */
+@media only screen and (min-width: 768px ) {
+    #title {
+        font-size: 8rem;
+    }
 }

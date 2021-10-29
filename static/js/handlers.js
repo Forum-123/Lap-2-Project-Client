@@ -57,6 +57,7 @@ const checkboxClick = (boxId, habitId) => {
 
 const deleteHabit = (buttonId, habitId) => {
     let habitBox = document.getElementById(buttonId);
+    habitBox.setAttribute("class", "delete");
     habitBox.addEventListener('click', e => {
         console.log('event')
         removeHabit(habitId);
